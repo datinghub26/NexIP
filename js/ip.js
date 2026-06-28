@@ -1,7 +1,13 @@
 /*
 ==========================================
 NexIP IP Engine
-Version 2.0
+Version 3.0
+==========================================
+*/
+
+/*
+==========================================
+Update IP Information
 ==========================================
 */
 
@@ -21,7 +27,7 @@ export async function updateIPInfo() {
 
         const info = {
 
-            ip: data.ip || "-",
+            ip: normalizeDigits(data.ip || "-"),
 
             country: data.country || "-",
 
@@ -29,7 +35,7 @@ export async function updateIPInfo() {
 
             city: data.city || "-",
 
-            postal: data.postal || "-",
+            postal: normalizeDigits(data.postal || "-"),
 
             latitude: data.latitude || "-",
 
@@ -47,7 +53,11 @@ export async function updateIPInfo() {
 
         };
 
-        // Hero
+        /*
+        ==========================================
+        Hero
+        ==========================================
+        */
 
         set("ip", info.ip);
 
@@ -73,17 +83,21 @@ export async function updateIPInfo() {
 
         set("ipVersion", info.ipVersion);
 
-        // Dashboard
+        /*
+        ==========================================
+        Dashboard
+        ==========================================
+        */
 
         set("dashboard-ip", info.ip);
 
         set("dashboard-country", info.country);
 
         set("dashboard-region", info.region);
-        
-        set("dashboard-postal", info.postal);
 
         set("dashboard-city", info.city);
+
+        set("dashboard-postal", info.postal);
 
         set("dashboard-isp", info.isp);
 
@@ -91,7 +105,11 @@ export async function updateIPInfo() {
 
         set("dashboard-timezone", info.timezone);
 
-        // Summary
+        /*
+        ==========================================
+        Summary
+        ==========================================
+        */
 
         set("summaryIP", info.ip);
 
@@ -101,13 +119,46 @@ export async function updateIPInfo() {
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(error);
 
         setUnavailable();
 
     }
+
+}
+
+/*
+==========================================
+Convert Local Digits
+(Bengali / Arabic / Persian)
+==========================================
+*/
+
+function normalizeDigits(value) {
+
+    if (value === null || value === undefined)
+        return "-";
+
+    return String(value).replace(/[٠-٩۰-۹০-৯]/g, function (digit) {
+
+        const map = {
+
+            "٠":"0","١":"1","٢":"2","٣":"3","٤":"4",
+            "٥":"5","٦":"6","٧":"7","٨":"8","٩":"9",
+
+            "۰":"0","۱":"1","۲":"2","۳":"3","۴":"4",
+            "۵":"5","۶":"6","۷":"7","۸":"8","۹":"9",
+
+            "০":"0","১":"1","২":"2","৩":"3","৪":"4",
+            "৫":"5","৬":"6","৭":"7","৮":"8","৯":"9"
+
+        };
+
+        return map[digit] || digit;
+
+    });
 
 }
 /*
@@ -137,6 +188,7 @@ function setUnavailable() {
         "dashboard-country",
         "dashboard-region",
         "dashboard-city",
+        "dashboard-postal",
         "dashboard-isp",
         "dashboard-asn",
         "dashboard-timezone",
@@ -168,7 +220,30 @@ function set(id, value) {
     if (!element)
         return;
 
+    if (typeof value === "string" || typeof value === "number") {
+
+        value = normalizeDigits(value);
+
+    }
+
     element.textContent = value;
+
+}
+
+/*
+==========================================
+Read Text
+==========================================
+*/
+
+function text(id) {
+
+    const element = document.getElementById(id);
+
+    if (!element)
+        return "";
+
+    return element.textContent;
 
 }
 
@@ -189,7 +264,7 @@ export function getCountryFlag(countryCode) {
 
 /*
 ==========================================
-Future Refresh API
+Refresh
 ==========================================
 */
 
@@ -198,10 +273,9 @@ export async function refreshIPInfo() {
     await updateIPInfo();
 
 }
-
 /*
 ==========================================
-Future JSON Export
+Collect Current IP Information
 ==========================================
 */
 
@@ -213,9 +287,11 @@ export function collectIPInfo() {
 
         country: text("country"),
 
+        region: text("region"),
+
         city: text("city"),
 
-        region: text("region"),
+        postal: text("postal"),
 
         isp: text("isp"),
 
@@ -237,17 +313,103 @@ export function collectIPInfo() {
 
 /*
 ==========================================
-Read Text
+Copy Current IP Information
 ==========================================
 */
 
-function text(id) {
+export function copyIPInfo() {
 
-    const element = document.getElementById(id);
+    const info = collectIPInfo();
 
-    if (!element)
-        return "";
+    const textData =
 
-    return element.textContent;
+`Public IP: ${info.ip}
+Country: ${info.country}
+Region: ${info.region}
+City: ${info.city}
+ZIP Code: ${info.postal}
+ISP: ${info.isp}
+ASN: ${info.asn}
+Timezone: ${info.timezone}
+Latitude: ${info.latitude}
+Longitude: ${info.longitude}
+Currency: ${info.currency}
+IP Version: ${info.ipVersion}`;
+
+    navigator.clipboard.writeText(textData);
 
 }
+
+/*
+==========================================
+Export JSON
+==========================================
+*/
+
+export function exportJSON() {
+
+    return JSON.stringify(
+
+        collectIPInfo(),
+
+        null,
+
+        4
+
+    );
+
+}
+
+/*
+==========================================
+Future Helpers
+==========================================
+*/
+
+export function getIPAddress() {
+
+    return text("ip");
+
+}
+
+export function getCountry() {
+
+    return text("country");
+
+}
+
+export function getISP() {
+
+    return text("isp");
+
+}
+
+export function getASN() {
+
+    return text("asn");
+
+}
+
+export function getPostalCode() {
+
+    return text("postal");
+
+}
+
+export function getCoordinates() {
+
+    return {
+
+        latitude: text("latitude"),
+
+        longitude: text("longitude")
+
+    };
+
+}
+
+/*
+==========================================
+End of File
+==========================================
+*/
