@@ -1,0 +1,312 @@
+/*
+==========================================
+NexIP v2
+Navbar
+==========================================
+*/
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    background:rgba(11,17,32,.85);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+}
+
+.navbar{
+
+    height:80px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+/* ==========================================
+   Logo
+========================================== */
+
+.logo{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+
+    color:#F8FAFC;
+
+    transition:.3s;
+
+}
+
+.logo span{
+
+    color:#3B82F6;
+
+}
+
+.logo:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* ==========================================
+   Navigation Links
+========================================== */
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+
+    list-style:none;
+
+}
+
+.nav-links li{
+
+    list-style:none;
+
+}
+
+.nav-links a{
+
+    position:relative;
+
+    color:#CBD5E1;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:#FFFFFF;
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:#3B82F6;
+
+    transition:.3s;
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+/* ==========================================
+   Right Side
+========================================== */
+
+.nav-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+/* ==========================================
+   Theme Button
+========================================== */
+
+#themeToggle{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:1.1rem;
+
+    background:#1E293B;
+
+    color:white;
+
+    transition:.3s;
+
+}
+
+#themeToggle:hover{
+
+    background:#3B82F6;
+
+    transform:rotate(12deg);
+
+}
+
+/* ==========================================
+   Mobile Button
+========================================== */
+
+.mobile-menu{
+
+    display:none;
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#1E293B;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:1.2rem;
+
+    transition:.3s;
+
+}
+
+.mobile-menu:hover{
+
+    background:#3B82F6;
+
+}
+
+/* ==========================================
+   Active Link
+========================================== */
+
+.nav-links a.active{
+
+    color:#FFFFFF;
+
+}
+
+.nav-links a.active::after{
+
+    width:100%;
+
+}
+
+/* ==========================================
+   Navbar Shadow on Scroll
+========================================== */
+
+.header.scrolled{
+
+    box-shadow:
+
+        0 12px 35px rgba(0,0,0,.35);
+
+}
+
+/* ==========================================
+   Small Desktop
+========================================== */
+
+@media(max-width:1100px){
+
+    .nav-links{
+
+        gap:24px;
+
+    }
+
+}
+
+/* ==========================================
+   Tablet / Mobile
+========================================== */
+
+@media(max-width:768px){
+
+    .navbar{
+
+        height:72px;
+
+    }
+
+    .nav-links{
+
+        position:absolute;
+
+        top:72px;
+
+        left:0;
+
+        width:100%;
+
+        display:none;
+
+        flex-direction:column;
+
+        padding:30px;
+
+        gap:20px;
+
+        background:#111827;
+
+        border-top:1px solid rgba(255,255,255,.05);
+
+    }
+
+    .nav-links.active{
+
+        display:flex;
+
+    }
+
+    .mobile-menu{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+    }
+
+}

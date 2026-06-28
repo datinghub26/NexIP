@@ -1,0 +1,322 @@
+/*
+==========================================
+NexIP v2
+Layout System
+==========================================
+*/
+
+/* ========= RESET ========= */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    background:#0B1120;
+    color:#F8FAFC;
+    line-height:1.7;
+    overflow-x:hidden;
+}
+
+/* ========= LINKS ========= */
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+button,
+input,
+textarea{
+    font:inherit;
+}
+
+/* ========= CONTAINER ========= */
+
+.container{
+
+    width:min(1200px,92%);
+    margin:auto;
+
+}
+
+/* ========= SECTION ========= */
+
+section{
+
+    padding:90px 0;
+
+}
+
+/* ========= HEADINGS ========= */
+
+h1{
+
+    font-size:4.5rem;
+    line-height:1;
+    font-weight:800;
+    letter-spacing:-2px;
+
+}
+
+h2{
+
+    font-size:2.5rem;
+    font-weight:700;
+
+}
+
+h3{
+
+    font-size:1.35rem;
+    font-weight:600;
+
+}
+
+p{
+
+    color:#94A3B8;
+    font-size:1.05rem;
+
+}
+
+/* ========= SECTION HEADER ========= */
+
+.section-header{
+
+    text-align:center;
+    margin-bottom:60px;
+
+}
+
+.section-header h2{
+
+    margin-bottom:18px;
+
+}
+
+.section-header p{
+
+    max-width:700px;
+    margin:auto;
+
+}
+
+/* ========= BADGE ========= */
+
+.section-badge{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:10px 18px;
+
+    background:rgba(59,130,246,.12);
+
+    border:1px solid rgba(59,130,246,.2);
+
+    color:#60A5FA;
+
+    border-radius:999px;
+
+    margin-bottom:25px;
+
+    font-weight:600;
+
+}
+
+/* ========= BUTTONS ========= */
+
+.btn-primary,
+.btn-secondary{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:16px 34px;
+
+    border-radius:14px;
+
+    transition:.30s ease;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+.btn-primary{
+
+    background:#3B82F6;
+    color:white;
+
+    border:none;
+
+}
+
+.btn-primary:hover{
+
+    background:#2563EB;
+    transform:translateY(-2px);
+
+}
+
+.btn-secondary{
+
+    border:1px solid #334155;
+
+    color:white;
+
+    background:transparent;
+
+}
+
+.btn-secondary:hover{
+
+    background:#1E293B;
+
+}
+
+/* ========= GRID ========= */
+
+.grid{
+
+    display:grid;
+    gap:30px;
+
+}
+
+/* ========= GLASS ========= */
+
+.glass{
+
+    background:rgba(17,24,39,.75);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.06);
+
+}
+
+/* ========= SHADOW ========= */
+
+.shadow{
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
+
+}
+
+/* ========= RADIUS ========= */
+
+.rounded{
+
+    border-radius:20px;
+
+}
+
+/* ========= TEXT ========= */
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.text-muted{
+
+    color:#94A3B8;
+
+}
+
+/* ========= SPACING ========= */
+
+.mt-1{margin-top:10px;}
+.mt-2{margin-top:20px;}
+.mt-3{margin-top:30px;}
+.mt-4{margin-top:40px;}
+.mt-5{margin-top:50px;}
+
+.mb-1{margin-bottom:10px;}
+.mb-2{margin-bottom:20px;}
+.mb-3{margin-bottom:30px;}
+.mb-4{margin-bottom:40px;}
+.mb-5{margin-bottom:50px;}
+
+/* ========= ANIMATIONS ========= */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+.fade-up{
+
+    animation:fadeUp .7s ease both;
+
+}
+
+/* ========= CUSTOM SCROLLBAR ========= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0B1120;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#334155;
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#3B82F6;
+
+}
+
+/* ========= SELECTION ========= */
+
+::selection{
+
+    background:#3B82F6;
+    color:white;
+
+}

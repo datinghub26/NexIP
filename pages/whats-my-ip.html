@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>What's My IP Address | NexIP</title>
+
+    <meta name="description"
+          content="Find your public IP address, ISP, ASN, browser, operating system, location and network information.">
+
+    <meta name="theme-color"
+          content="#0B1120">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="../css/main.css">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header class="header">
+
+    <div class="container">
+
+        <nav class="navbar">
+
+            <a href="../index.html"
+               class="logo">
+
+                Nex<span>IP</span>
+
+            </a>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="../index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a class="active"
+                       href="whats-my-ip.html">
+                        What's My IP
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Browser Info
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        DNS Lookup
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="nav-actions">
+
+                <button id="themeToggle">
+
+                    🌙
+
+                </button>
+
+                <button
+                    class="mobile-menu"
+                    id="menuToggle">
+
+                    ☰
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<!-- ==========================================
+     HERO
+========================================== -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-badge">
+
+                🌍 Network Diagnostics
+
+            </span>
+
+            <h1>
+
+                What's My
+                <span>IP Address?</span>
+
+            </h1>
+
+            <p>
+
+                Instantly discover your public IP,
+                ISP,
+                ASN,
+                browser,
+                operating system,
+                location,
+                language,
+                timezone,
+                and much more.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     PUBLIC IP
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="hero-card">
+
+<div class="card-header">
+
+Your Public IP Address
+
+</div>
+
+<div class="ip-display">
+
+<div class="status-badge">
+
+🟢 Live Detection
+
+</div>
+
+<h2 id="ip">
+
+Loading...
+
+</h2>
+
+<button
+id="copyIP"
+class="btn-primary">
+
+📋 Copy IP
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     NETWORK INFORMATION
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="section-header">
+
+<h2>
+
+Network Information
+
+</h2>
+
+<p>
+
+Real-time information about your internet connection.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<h3>
+
+🌍 Country
+
+</h3>
+
+<p id="country">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+🏙 City
+
+</h3>
+
+<p id="city">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+📍 Region
+
+</h3>
+
+<p id="region">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+🛰 ISP
+
+</h3>
+
+<p id="isp">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+🏢 ASN
+
+</h3>
+
+<p id="asn">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+🌐 IP Version
+
+</h3>
+
+<p id="ipVersion">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+🕒 Timezone
+
+</h3>
+
+<p id="timezone">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+💰 Currency
+
+</h3>
+
+<p id="currency">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+📮 Postal Code
+
+</h3>
+
+<p id="postal">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+📍 Latitude
+
+</h3>
+
+<p id="latitude">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+📍 Longitude
+
+</h3>
+
+<p id="longitude">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+📡 Online Status
+
+</h3>
+
+<p id="online">
+
+Checking...
+
+</p>
+
+</div>
+
+</div>
+</div>
+
+</section>
+
+<!-- ==========================================
+     BROWSER INFORMATION
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="section-header">
+
+<span class="section-badge">
+
+🌐 Browser Details
+
+</span>
+
+<h2>
+
+Browser & Device Information
+
+</h2>
+
+<p>
+
+Information detected directly from your browser.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<h3>
+
+🌐 Browser
+
+</h3>
+
+<p id="browser">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+💻 Operating System
+
+</h3>
+
+<p id="os">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+📱 Device Type
+
+</h3>
+
+<p id="device">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+🖥 Screen Resolution
+
+</h3>
+
+<p id="screen">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+📏 Viewport
+
+</h3>
+
+<p id="viewport">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+🌍 Language
+
+</h3>
+
+<p id="language">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+💻 Platform
+
+</h3>
+
+<p id="platform">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+🍪 Cookies
+
+</h3>
+
+<p id="cookies">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+🎨 Color Scheme
+
+</h3>
+
+<p id="colorScheme">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+🧭 Timezone
+
+</h3>
+
+<p id="timezone">
+
+Loading...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+📡 Connection Status
+
+</h3>
+
+<p id="online">
+
+Checking...
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+
+⚙ Browser Engine
+
+</h3>
+
+<p id="browserEngine">
+
+Detecting...
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     CONNECTION SUMMARY
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="hero-card">
+
+<div class="card-header">
+
+Connection Summary
+
+</div>
+
+<div class="info-table">
+
+<div class="info-row">
+
+<span>
+
+Public IP
+
+</span>
+
+<strong id="summaryIP">
+
+Loading...
+
+</strong>
+
+</div>
+
+<div class="info-row">
+
+<span>
+
+Country
+
+</span>
+
+<strong id="summaryCountry">
+
+Loading...
+
+</strong>
+
+</div>
+
+<div class="info-row">
+
+<span>
+
+Browser
+
+</span>
+
+<strong id="summaryBrowser">
+
+Loading...
+
+</strong>
+
+</div>
+
+<div class="info-row">
+
+<span>
+
+Operating System
+
+</span>
+
+<strong id="summaryOS">
+
+Loading...
+
+</strong>
+
+</div>
+
+<div class="info-row">
+
+<span>
+
+Device
+
+</span>
+
+<strong id="summaryDevice">
+
+Loading...
+
+</strong>
+
+</div>
+
+<div class="info-row">
+
+<span>
+
+Timezone
+
+</span>
+
+<strong id="summaryTimezone">
+
+Loading...
+
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+     QUICK ACTIONS
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="section-header">
+
+<h2>
+
+Quick Actions
+
+</h2>
+
+</div>
+
+<div class="hero-buttons">
+
+<button
+class="btn-primary"
+id="copyIP">
+
+📋 Copy IP Address
+
+</button>
+
+<button
+class="btn-secondary"
+id="refreshInfo">
+
+🔄 Refresh Information
+
+</button>
+
+<a
+href="../index.html"
+class="btn-secondary">
+
+🏠 Back to Home
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <h3>
+
+                    NexIP
+
+                </h3>
+
+                <p>
+
+                    Fast, modern and privacy-friendly
+                    IP, Network and Developer tools.
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                    Network Tools
+
+                </h4>
+
+                <ul>
+
+                    <li><a href="whats-my-ip.html">What's My IP</a></li>
+
+                    <li><a href="#">IP Lookup</a></li>
+
+                    <li><a href="#">DNS Lookup</a></li>
+
+                    <li><a href="#">WHOIS Lookup</a></li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                    Developer Tools
+
+                </h4>
+
+                <ul>
+
+                    <li><a href="#">JSON Formatter</a></li>
+
+                    <li><a href="#">Password Generator</a></li>
+
+                    <li><a href="#">UUID Generator</a></li>
+
+                    <li><a href="#">Base64 Encoder</a></li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                    Company
+
+                </h4>
+
+                <ul>
+
+                    <li><a href="#">About</a></li>
+
+                    <li><a href="#">Contact</a></li>
+
+                    <li><a href="#">Privacy Policy</a></li>
+
+                    <li><a href="#">Terms of Service</a></li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 NexIP. All Rights Reserved.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ==========================================
+     JavaScript
+========================================== -->
+
+<script type="module" src="../js/main.js"></script>
+
+</body>
+
+</html>
