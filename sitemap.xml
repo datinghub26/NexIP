@@ -1,1 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://nexip.online/</loc>
+    </url>
+
+    <url>
+        <loc>https://nexip.online/pages/about.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nexip.online/pages/contact.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nexip.online/pages/privacy.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nexip.online/pages/terms.html</loc>
+    </url>
+
+    <url>
+        <loc>https://nexip.online/pages/whats-my-ip.html</loc>
+    </url>
+
+</urlset>
