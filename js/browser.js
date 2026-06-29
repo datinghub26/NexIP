@@ -1,7 +1,7 @@
 /*
 ==========================================
 NexIP Browser Engine
-Version 2.0
+Version 3.0
 ==========================================
 */
 
@@ -10,75 +10,157 @@ export function updateBrowserInfo() {
     const ua = navigator.userAgent;
 
     let browser = "Unknown";
-    let version = "Unknown";
+    let version = "";
     let engine = "Unknown";
 
-    // Browser Detection
-    if (ua.includes("Firefox")) {
+    /* ======================================
+       Browser Detection
+    ====================================== */
+
+    if (/FxiOS/i.test(ua)) {
+
+        browser = "Firefox";
+        version = ua.match(/FxiOS\/([\d.]+)/)?.[1] || "";
+        engine = "WebKit";
+
+    }
+
+    else if (/EdgiOS/i.test(ua)) {
+
+        browser = "Microsoft Edge";
+        version = ua.match(/EdgiOS\/([\d.]+)/)?.[1] || "";
+        engine = "WebKit";
+
+    }
+
+    else if (/CriOS/i.test(ua)) {
+
+        browser = "Google Chrome";
+        version = ua.match(/CriOS\/([\d.]+)/)?.[1] || "";
+        engine = "WebKit";
+
+    }
+
+    else if (/OPR/i.test(ua)) {
+
+        browser = "Opera";
+        version = ua.match(/OPR\/([\d.]+)/)?.[1] || "";
+        engine = "Blink";
+
+    }
+
+    else if (/SamsungBrowser/i.test(ua)) {
+
+        browser = "Samsung Internet";
+        version = ua.match(/SamsungBrowser\/([\d.]+)/)?.[1] || "";
+        engine = "Blink";
+
+    }
+
+    else if (/Firefox/i.test(ua)) {
+
         browser = "Firefox";
         version = ua.match(/Firefox\/([\d.]+)/)?.[1] || "";
         engine = "Gecko";
+
     }
 
-    else if (ua.includes("Edg")) {
+    else if (/Edg/i.test(ua)) {
+
         browser = "Microsoft Edge";
         version = ua.match(/Edg\/([\d.]+)/)?.[1] || "";
         engine = "Blink";
+
     }
 
-    else if (ua.includes("Chrome")) {
+    else if (/Chrome/i.test(ua)) {
+
         browser = "Google Chrome";
         version = ua.match(/Chrome\/([\d.]+)/)?.[1] || "";
         engine = "Blink";
+
     }
 
-    else if (ua.includes("Safari")) {
+    else if (/Safari/i.test(ua)) {
+
         browser = "Safari";
         version = ua.match(/Version\/([\d.]+)/)?.[1] || "";
         engine = "WebKit";
+
     }
 
-    // Operating System
+    /* ======================================
+       Operating System
+    ====================================== */
 
     let os = "Unknown";
 
-    if (ua.includes("Windows NT 10"))
+    if (/Windows NT 10/i.test(ua))
         os = "Windows 10 / 11";
 
-    else if (ua.includes("Windows NT 6.3"))
+    else if (/Windows NT 6.3/i.test(ua))
         os = "Windows 8.1";
 
-    else if (ua.includes("Windows NT 6.1"))
+    else if (/Windows NT 6.1/i.test(ua))
         os = "Windows 7";
 
-    else if (ua.includes("Android"))
-        os = "Android";
+    else if (/Android/i.test(ua)) {
 
-    else if (ua.includes("iPhone"))
-        os = "iPhone";
+        const v = ua.match(/Android\s([\d.]+)/)?.[1];
 
-    else if (ua.includes("iPad"))
-        os = "iPad";
+        os = v ? `Android ${v}` : "Android";
 
-    else if (ua.includes("Mac"))
-        os = "macOS";
+    }
 
-    else if (ua.includes("Linux"))
+    else if (/iPhone/i.test(ua)) {
+
+        const v = ua.match(/OS\s([\d_]+)/)?.[1];
+
+        os = v ? `iOS ${v.replace(/_/g, ".")}` : "iOS";
+
+    }
+
+    else if (/iPad/i.test(ua)) {
+
+        const v = ua.match(/OS\s([\d_]+)/)?.[1];
+
+        os = v ? `iPadOS ${v.replace(/_/g, ".")}` : "iPadOS";
+
+    }
+
+    else if (/Mac OS X/i.test(ua)) {
+
+        const v = ua.match(/Mac OS X\s([\d_]+)/)?.[1];
+
+        os = v ? `macOS ${v.replace(/_/g, ".")}` : "macOS";
+
+    }
+
+    else if (/Linux/i.test(ua))
         os = "Linux";
 
-    // Device
+    /* ======================================
+       Device Type
+    ====================================== */
 
     let device = "Desktop";
 
-    if (/Android|iPhone|Mobile/i.test(ua))
-        device = "Mobile";
-
-    else if (/iPad|Tablet/i.test(ua))
+    if (/iPad/i.test(ua))
         device = "Tablet";
 
-    // Information
+    else if (/Tablet/i.test(ua))
+        device = "Tablet";
 
-    const browserText = `${browser} ${version}`;
+    else if (/Android|iPhone|Mobile/i.test(ua))
+        device = "Mobile";
+
+    /* ======================================
+       Browser Information
+    ====================================== */
+
+    const browserText = version
+        ? `${browser} ${version}`
+        : browser;
 
     const screenResolution =
         `${screen.width} × ${screen.height}`;
@@ -99,14 +181,16 @@ export function updateBrowserInfo() {
         navigator.cookieEnabled ? "Enabled" : "Disabled";
 
     const platform =
-        navigator.platform;
+        navigator.userAgentData?.platform || navigator.platform;
 
     const colorScheme =
         window.matchMedia("(prefers-color-scheme: dark)").matches
             ? "Dark"
             : "Light";
 
-    // Update all fields
+    /* ======================================
+       Update Dashboard
+    ====================================== */
 
     update("browser", browserText);
     update("dashboard-browser", browserText);
@@ -154,8 +238,7 @@ function update(id, value) {
 
     const element = document.getElementById(id);
 
-    if (!element)
-        return;
+    if (!element) return;
 
     element.textContent = value;
 
